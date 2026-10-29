@@ -1,0 +1,652 @@
+@use "variables" as *;
+@use "extend" as *;
+@use "mixin" as *;
+
+* {
+    @extend %reset;
+}
+
+/* HEADER */
+.header {
+    background: $color-background;
+
+    &__container {
+        @extend %flex-between;
+
+        width: $container-width;
+        margin: 0 auto;
+        padding-top: 54px;
+    }
+
+    &__logo {
+        a {
+            @extend %link-reset;
+
+            font-family: $font-logo;
+            font-size: 40px;
+            font-weight: 400;
+        }
+    }
+
+    &__navigation {
+        display: flex;
+        gap: 50px;
+    }
+
+    &__link {
+        @extend %link-reset;
+        @include underline-hover;
+
+        font-family: $font-main;
+        font-size: 22px;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 57px;
+    }
+
+    &__cart {
+        @include underline-hover;
+
+        display: inline-block;
+        text-decoration: none;
+
+        &-icon {
+            display: block;
+        }
+    }
+
+    &__login-btn {
+        @include button-fill;
+
+        color: $color-primary;
+        padding: 11px 41px;
+        font-family: $font-main;
+        font-size: 20px;
+        font-weight: 500;
+        text-transform: uppercase;
+        background-color: transparent;
+        border: 2px solid $color-primary;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: color $transition-default;
+    }
+}
+
+/* MAIN */
+.main {
+    width: 100%;
+    background-color: $color-background;
+
+    &__container {
+        @extend %container;
+
+        display: flex;
+        justify-content: space-between;
+        gap: 160px;
+        padding-top: 138px;
+        padding-bottom: 166px;
+    }
+
+    &__text-content {
+        h1 {
+            @extend %heading;
+
+            font-size: 86px;
+        }
+
+        p {
+            @extend %body-text;
+
+            margin-top: 27px;
+            max-width: 480px;
+            font-size: 24px;
+            font-weight: 500;
+            color: #267d49;
+            line-height: 220%;
+        }
+    }
+
+    &__btn {
+        @include button-hover;
+
+        margin-top: 54px;
+        padding: 22px 60px;
+        font-size: 20px;
+        color: $color-white;
+        background-color: $color-primary;
+        box-shadow: 6px 33px 59px 0 rgba(0, 0, 0, 0.3);
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+
+    &__img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* SELLING */
+.selling {
+    padding-top: 114px;
+    text-align: center;
+    background-color: $color-white;
+
+    &__container {
+        @extend %container;
+
+        // В исходном коде ширина была фиксированной
+        width: 1380px;
+    }
+
+    h2 {
+        @extend %section-title;
+
+        font-family: "Roboto Slab", sans-serif;
+        font-size: 64px;
+    }
+
+    p {
+        margin-top: 37px;
+        font-family: $font-main;
+        font-size: 22px;
+        font-weight: 500;
+        color: $color-primary;
+    }
+
+    &__cards {
+        display: flex;
+        gap: 43px;
+        margin-top: 80px;
+    }
+
+    &__card {
+        text-align: center;
+
+        &-1 {
+            @extend %card-background;
+            background-color: #93b9a2;
+        }
+
+        &-2 {
+            @extend %card-background;
+            background-color: #a9d4ba;
+        }
+
+        &-3 {
+            @extend %card-background;
+            background-color: #cadcd0;
+        }
+
+        h3 {
+            margin-top: 51px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #373737;
+        }
+    }
+
+    &__rating {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        margin-top: 8px;
+
+        p {
+            margin: 0;
+            font-family: $font-main;
+            font-weight: 500;
+            font-size: 22px;
+            color: #454545;
+        }
+
+        span {
+            height: 27px;
+            font-weight: 700;
+            color: #454545;
+            font-size: 16px;
+        }
+    }
+
+    &__btn {
+        @include arrow-button-hover;
+
+        margin: 80px auto 0;
+        width: 220px;
+        height: 60px;
+        @extend %centered-flex;
+
+        border: 2px solid $color-primary;
+        border-radius: 3px;
+        color: $color-primary;
+        background-color: transparent;
+        font-size: 22px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+}
+
+/* OUR PRODUCTS */
+.products {
+    padding-top: 185px;
+    text-align: center;
+    background-color: $color-white;
+
+    &__container {
+        @extend %container;
+
+        width: 1380px;
+    }
+
+    h2 {
+        @extend %section-title;
+
+        font-size: 50px;
+        font-family: "Roboto Slab", sans-serif;
+    }
+
+    &__navigation {
+        @include flex-center(100px);
+
+        margin-top: 70px;
+    }
+
+    &__link {
+        @extend %products-link;
+
+        &-important {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+            color: $color-primary;
+        }
+    }
+
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 82px 57px;
+        margin-top: 83px;
+    }
+}
+
+.product-2 {
+    height: 378px;
+    background-color: #eaebf0;
+}
+
+.product-8 {
+    background-color: #c5f5d6;
+}
+
+.product {
+    &__card {
+        h3 {
+            @extend %product-title;
+
+            margin-top: 36px;
+        }
+    }
+
+    &__rating {
+        @include flex-center(40px);
+
+        margin-top: 8px;
+
+        p {
+            margin: 0;
+            font-family: $font-main;
+            font-weight: 500;
+            font-size: 22px;
+            color: #454545;
+        }
+
+        span {
+            height: 27px;
+            font-weight: 700;
+            color: #454545;
+            font-size: 16px;
+        }
+    }
+}
+
+/* OFFER */
+.offer {
+    padding-top: 195px;
+    background-color: $color-white;
+
+    &__container {
+        @extend %container;
+
+        display: flex;
+        gap: 104px;
+        background-color: $color-background;
+    }
+
+    &__content {
+        h2 {
+            @extend %offer-heading;
+
+            font-size: 46px;
+            margin-top: 75px;
+        }
+
+        p {
+            @extend %offer-text;
+
+            font-size: 22px;
+            line-height: 167%;
+            margin-top: 20px;
+            margin-right: 250px;
+        }
+    }
+
+    &__time {
+        display: flex;
+        gap: 35px;
+        margin-top: 40px;
+
+        &-item {
+            @extend %offer-card;
+
+            padding: 17px 29px;
+
+            h3 {
+                font-family: $font-main;
+                font-size: 32px;
+                font-weight: 600;
+                color: $color-primary;
+            }
+
+            span {
+                font-family: $font-main;
+                font-size: 16px;
+                font-weight: 500;
+                color: $color-primary;
+            }
+        }
+    }
+
+    &__btn {
+        @include lift-hover;
+
+        margin-top: 41px;
+        padding: 22px 70px;
+        color: $color-white;
+        font-size: 20px;
+        font-weight: 500;
+        text-transform: uppercase;
+        background-color: $color-primary;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        box-shadow: 0 7px 30px 0 rgba(0, 0, 0, 0.05);
+    }
+}
+
+/* DESIGNER CLOTHES FOR YOU */
+
+.design-clothes {
+    padding-top: 218px;
+    text-align: center;
+    background-color: $color-white;
+
+    &__container {
+        @extend %container;
+    }
+
+    h2 {
+        font-size: 50px;
+        font-weight: 500; // исправлено: вместо ошибочного font: 500px
+        color: $color-primary;
+        font-family: 'Roboto Slab', sans-serif;
+        line-height: 100%;
+    }
+
+    p {
+        margin-top: 51px;
+        font-size: 22px;
+        color: $color-primary;
+        font-family: $font-main;
+        line-height: 100%;
+    }
+
+    &-cards {
+        display: flex;
+        gap: 43px;
+        margin-top: 72px;
+    }
+
+    &__card-1 {
+        @extend %design-card;
+        height: 566px;
+    }
+
+    &__card {
+        h3 {
+            margin-top: 25px;
+            font-size: 30px;
+            color: #373737;
+            font-weight: 600;
+            font-family: $font-main;
+            line-height: 100%;
+        }
+
+        p {
+            max-width: 380px;
+            margin: 5px auto 0;
+            font-size: 22px;
+            color: #373737;
+            font-weight: 500;
+            font-family: $font-main;
+            line-height: 143%;
+            text-align: center;
+        }
+    }
+}
+
+
+/* FEEDBACK CORNER */
+
+.corner {
+    padding-top: 249px;
+    text-align: center;
+    background-color: $color-white;
+
+    &__container {
+        @extend %container;
+    }
+
+    h2 {
+        @extend %heading;
+        font-size: 50px;
+        font-family: 'Roboto Slab', sans-serif;
+        font-weight: 500;
+        line-height: 100%;
+    }
+
+    &__cards {
+        display: flex;
+        gap: 37px;
+        margin-top: 109px;
+    }
+
+    &__card {
+        @extend %feedback-card;
+        width: 434px;
+        padding: 7px 17px 29px 16px;
+        text-align: left;
+
+        span {
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+            font-size: 60px;
+            font-weight: 400;
+            line-height: 100%;
+            color: $color-primary;
+        }
+
+        h3 {
+            font-family: 'Roboto Serif', sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+            line-height: 100%;
+            color: $color-primary;
+        }
+
+        p {
+            max-width: 340px;
+            margin-top: 30px;
+            font-family: $font-main;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 100%;
+            color: #6F6F6F;
+        }
+    }
+
+    &-card-important {
+        background-color: $color-background;
+
+        p {
+            max-width: 360px;
+            color: $color-primary;
+        }
+    }
+
+    &__btn {
+        @extend %centered-flex;
+        gap: 51px;
+        margin-top: 125px;
+
+        &-left,
+        &-right {
+            padding: 13px 16px;
+            color: $color-primary;
+            border-radius: 3px;
+            box-shadow: 0 7px 51px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        &-right {
+            background-color: $color-background;
+        }
+    }
+}
+
+
+/* FOOTER */
+
+.footer {
+    height: 599px;
+    margin-top: 193px;
+    background-color: $color-primary;
+
+    &__container {
+        @extend %container;
+        display: flex;
+        gap: 217px;
+    }
+
+    &__media {
+        h2 {
+            margin-top: 80px;
+            font-family: $font-logo;
+            font-weight: 400;
+            font-size: 50px;
+            line-height: 100%;
+            color: $color-white;
+        }
+
+        p {
+            margin-top: 44px;
+            font-family: 'Roboto Slab', sans-serif;
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 100%;
+            color: $color-white;
+        }
+    }
+
+    &__media-icon {
+        display: flex;
+        gap: 36px;
+        margin-top: 26px;
+    }
+
+    &__links {
+        display: flex;
+        gap: 144px;
+        margin-top: 105px;
+    }
+
+    &__link {
+        h3 {
+            font-family: 'Roboto Slab', sans-serif;
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 100%;
+            color: $color-white;
+        }
+    }
+
+    &__links-li {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin-top: 25px;
+
+        a {
+            @extend %footer-link;
+            font-size: 20px;
+        }
+    }
+
+    &__form {
+        p {
+            font-family: 'Roboto Slab', sans-serif;
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 100%;
+            text-transform: uppercase;
+            color: $color-white;
+        }
+    }
+}
+
+.subscribe-form {
+    margin-top: 38px;
+
+    input {
+        background: transparent;
+        border: 2px solid #A3F3BE;
+        border-radius: 3px;
+        padding: 12px 16px;
+        color: $color-white;
+        font-size: 20px;
+        outline: none;
+        font-weight: 400;
+        line-height: 100%;
+
+        &::placeholder {
+            color: $color-white;
+        }
+    }
+
+    button {
+        background-color: #A3F3BE;
+        border: none;
+        color: $color-primary;
+        padding: 14px 21px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+}

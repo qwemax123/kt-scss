@@ -1,0 +1,93 @@
+@use "variables" as *;
+
+@mixin underline-hover {
+    position: relative;
+    padding-bottom: 6px;
+
+    &::after {
+        @extend %underline-animation;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+}
+
+@mixin button-fill($background: $color-primary, $duration: 0.5s) {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 150%;
+        padding-top: 150%;
+        border-radius: 50%;
+        background-color: $background;
+        z-index: -1;
+        transition: transform $duration ease-in-out;
+    }
+
+    &:hover {
+        color: $color-white;
+    }
+
+    &:hover::before {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@mixin button-hover {
+    transition:
+        transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+        box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 6px 18px 35px 0 rgba(34, 79, 52, 0.35);
+    }
+}
+
+@mixin arrow-button-hover {
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+
+    .arrow {
+        margin-left: 10px;
+        transition: transform 0.2s ease;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+
+        .arrow {
+            transform: translateX(7px);
+        }
+    }
+}
+
+@mixin flex-center($gap: 0) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+}
+
+@mixin lift-hover($distance: -4px) {
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+        box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    &:hover {
+        transform: translateY($distance);
+        box-shadow: 0 15px 35px 0 rgba(34, 79, 52, 0.3);
+    }
+}
